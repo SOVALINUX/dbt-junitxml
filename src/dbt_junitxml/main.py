@@ -11,6 +11,10 @@ class InvalidRunResult(Exception):
     pass
 
 
+def is_dbt_test(dict):
+    return dict["unique_id"].split(".")[0] == "test"
+
+
 def convert_timestamp_to_isoformat(timestamp: str) -> str:
     return datetime.strptime(timestamp, '%Y-%m-%dT%H:%M:%S.%fZ').strftime(
         '%Y-%m-%dT%H:%M:%S')
@@ -52,14 +56,14 @@ def parse(run_result, manifest, output):
         ]:
             raise InvalidRunResult("run_result.json other than (v4-v6) are not supported.")
 
-        if not executed_command == "test":
+        if not executed_command in ["test", "build"]:
             raise InvalidRunResult(
-                f"run_result.json must be from the output of `dbt test`. Got dbt {executed_command}.")
+                f"run_result.json must be from the output of `dbt test` or `dbt build`. Got dbt {executed_command}.")
 
     except KeyError as e:
         raise InvalidRunResult(e)
 
-    tests = run_result["results"]
+    tests = [d for d in run_result["results"] if is_dbt_test(d)]
     total_elapsed_time = run_result["elapsed_time"]
     test_suite_timestamp = convert_timestamp_to_isoformat(run_result["metadata"]["generated_at"])
 
