@@ -2,5 +2,20 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "config:recommended"
+  ],
+  "prHeader": "TestHeader",
+  "assignees": [
+    "theforgem4ster"
+  ],
+  "labels": ["dependencies-testlabel"],
+  "packageRules": [
+    {
+      "matchPackagePatterns": ["docker"],
+      "labels": ["docker-testlabel"] 
+    },
+    {
+      "matchPackagePatterns": ["maven"],
+      "labels": ["maven-testlabel"]
+    }
   ]
 }
