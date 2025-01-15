@@ -10,11 +10,11 @@
   "labels": ["dependencies-testlabel"],
   "packageRules": [
     {
-      "matchPackagePatterns": ["docker"],
+      "matchPackageNames": ["docker"],
       "labels": ["docker-testlabel"] 
     },
     {
-      "matchPackagePatterns": ["maven"],
+      "matchPackageNames": ["maven"],
       "labels": ["maven-testlabel"]
     }
   ]
