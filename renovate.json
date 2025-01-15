@@ -10,8 +10,9 @@
   "labels": ["dependencies-testlabel"],
   "packageRules": [
     {
-      "matchPackageNames": ["docker"],
-      "labels": ["docker-testlabel"] 
+      "matchDatasources": ["npm"],
+      "matchPackageNames": ["/^angular/"],
+      "groupName": "Angular"
     },
     {
       "matchPackageNames": ["maven"],
