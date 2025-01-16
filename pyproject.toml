@@ -1,3 +1,6 @@
+[project]
+name = "dbt-junitxml"
+
 [tool.poetry]
 name = "dbt-junitxml"
 version = "0.2.3"
