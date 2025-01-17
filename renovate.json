@@ -1,0 +1,22 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:recommended"
+  ],
+  "prHeader": "TestHeader",
+  "assignees": [
+    "theforgem4ster"
+  ],
+  "labels": ["dependencies-testlabel"],
+  "packageRules": [
+    {
+      "matchDatasources": ["npm"],
+      "matchPackageNames": ["/^angular/"],
+      "groupName": "Angular"
+    },
+    {
+      "matchPackageNames": ["maven"],
+      "labels": ["maven-testlabel"]
+    }
+  ]
+}
